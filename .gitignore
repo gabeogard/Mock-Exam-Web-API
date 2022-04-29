@@ -3,3 +3,7 @@
 /client/node_modules/
 /node_modules/
 /server/node_modules/
+/.idea/second-attempt.iml
+/.idea/modules.xml
+/client/.parcel-cache/lock.mdb
+/client/.parcel-cache/data.mdb
