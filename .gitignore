@@ -7,4 +7,4 @@
 /.idea/modules.xml
 /client/.parcel-cache/lock.mdb
 /client/.parcel-cache/data.mdb
-
+/server/.env
