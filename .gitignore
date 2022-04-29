@@ -1,4 +1,4 @@
-|/client/.parcel-cache/
+/client/.parcel-cache/
 /client/dist/
 /client/node_modules/
 /node_modules/
@@ -7,3 +7,4 @@
 /.idea/modules.xml
 /client/.parcel-cache/lock.mdb
 /client/.parcel-cache/data.mdb
+

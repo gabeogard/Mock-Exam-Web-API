@@ -1,4 +1,6 @@
-import {BrowserRouter, Link, Route} from "react-router-dom";
+import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
+import {Movies} from "./movies";
+import {LogIn} from "./logIn";
 
 function FrontPage() {
     return <div>
@@ -10,13 +12,12 @@ function FrontPage() {
     </div>
 }
 
-function Movies() {
-    return null;
-}
-
 export function Application() {
     return <BrowserRouter>
-        <Route path={"/"} element={<FrontPage/>}/>
-        <Route path={"/movies/*"} element={<Movies/>}/>
+        <Routes>
+            <Route path={"/"} element={<FrontPage/>}/>
+            <Route path={"/movies/*"} element={<Movies/>}/>
+            <Route path={"/login"} element={<LogIn/>}/>
+        </Routes>
     </BrowserRouter>
 }
