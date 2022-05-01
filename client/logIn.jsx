@@ -10,6 +10,16 @@ async function fetchJSON(url) {
     return await res.json()
 }
 
+export function randomString(length) {
+    const possible =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    for (let i = 0; i < length; i++) {
+        result += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return result;
+}
+
 function LoginButton({config, label, provider}) {
     async function handleLogin() {
         const {
@@ -19,11 +29,13 @@ function LoginButton({config, label, provider}) {
             client_id
         } = config[provider]
 
-
+        const state = randomString(50)
+        window.sessionStorage.setItem("expected_state", state)
         const parameters = {
             response_type,
             response_mode: "fragment",
             client_id,
+            state,
             scope,
             redirect_uri: `${window.location.origin}/login/${provider}/callback`,
         }
