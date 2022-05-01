@@ -76,6 +76,7 @@ export function LoginCallback({reload, config}) {
             return;
         }
 
+
         if (code) {
             const {client_id, token_endpoint} = config[provider];
             const code_verifier = window.sessionStorage.getItem("code_verifier");
