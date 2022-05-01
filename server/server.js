@@ -3,21 +3,21 @@ import * as path from "path";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv"
+import {fileURLToPath} from "url"
+import { LoginApi } from "./loginApi.js"
 
 dotenv.config()
 
 const app = express()
+const file = fileURLToPath(import.meta.url)
+const directory = path.dirname(file)
 
 app.use(bodyParser.json())
 app.use(cookieParser(process.env.COOKIE_SECRET))
 
-app.post("/api/login", (req, res) => {
-    const {access_token} = req.body
-    res.cookie("access_token", access_token, {signed: true})
-    res.sendStatus(200)
-})
 
 app.use(express.static("../client/dist"))
+app.use(express.static(path.resolve(directory, "..", "client", "dist")))
 
 app.use((req, res, next) => {
     if (req.method === "GET" && !req.path.startsWith("/api")) {
@@ -26,6 +26,8 @@ app.use((req, res, next) => {
        next();
    }
 })
+
+app.use("/api/login", LoginApi());
 
 app.listen(process.env.PORT || 3000)
 
