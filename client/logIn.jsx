@@ -30,6 +30,8 @@ function LoginButton({config, label, provider}) {
 
         window.location.href =
             authorization_endpoint + "?" + new URLSearchParams(parameters)
+
+        console.log(parameters.redirect_uri.toString())
     }
 
     return (
