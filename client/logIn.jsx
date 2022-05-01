@@ -147,7 +147,7 @@ export function LogInCallback() {
             body: JSON.stringify({access_token})
         })
 
-        navigate("/");
+        navigate("/login/google/callback");
     }, [])
 
     return <h1>Please wait...</h1>
