@@ -1,27 +1,36 @@
 import {useLoading} from "./useLoading";
 import {fetchJSON} from "./application";
+import {useNavigate} from "react-router-dom";
+import {useContext, useEffect} from "react";
+import {ExamApiContext} from "./examApiContext";
 
-export function Profile({user, signOut}) {
 
-    const {loading, data, error, userinfo} = useLoading(async () => {
-        return await fetchJSON("/api/login")
-    })
+export function Profile({user, reload}) {
 
-    if(loading){
-        return <div>Please wait...</div>
+    async function handleSignOut() {
+        const res = await fetch("/api/login", {method: "DELETE"});
+        if (!res.ok) {
+            throw new Error(`Failed to POST ${res.status}: ${res.statusText}`);
+        }
+        reload()
+        window.location.href="/"
+        console.log(name)
     }
-    if(error){
-        return <div>Error: {error.toString()}</div>
-    }
+    const {name, email, picture} = user.google
 
-    const {name, email} = data
-    console.log(name)
-    console.log(email)
+    console.log(user.google)
 
 
     return <div>
-        <h1>Welcome, </h1>
-        <pre>add my google email and send me nudes </pre>
-        <button onClick={signOut}>Sign out</button>
+        <h1>Welcome, {name}</h1>
+        <img src={picture} alt={"profile picture"} width={"120px"}/>
+        <div>
+                <p>Name: {name}</p>
+        </div>
+        <div>
+            <p>Email: {email}</p>
+        </div>
+
+        <button onClick={handleSignOut}>Sign out</button>
     </div>
 }

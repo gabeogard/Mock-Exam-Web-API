@@ -108,9 +108,9 @@ export function LoginCallback({reload, config}) {
             }
             const {access_token} = await res.json();
             await registerLogin(provider, {access_token});
-            reload();
             console.log(window.location.href.toString())
-            navigate("/");
+            reload();
+            window.location.href="/"
             return;
         }
 
@@ -121,7 +121,7 @@ export function LoginCallback({reload, config}) {
 
         await registerLogin(provider, {access_token});
         reload();
-        navigate("/");
+        window.location.href="/"
     }, []);
 
     if (error) {
@@ -136,6 +136,17 @@ export function LoginCallback({reload, config}) {
     return <h1>Please wait...</h1>;
 }
 
+export function EndSession({reload}) {
+    const navigate = useNavigate()
+    const { endSession } = useContext(ExamApiContext)
+    useEffect(async () => {
+        await endSession()
+        reload()
+        navigate("/")
+    })
+    return <h1>Please wait...</h1>
+}
+
 export function LogInPage({config, reload}) {
     return (
         <Routes>
@@ -143,28 +154,8 @@ export function LogInPage({config, reload}) {
             <Route
                 path={"/:provider/callback"}
                 element={<LoginCallback config={config} reload={reload}/>}/>
+            <Route path={"/endsession"} element={<EndSession reload={reload}/>}/>
         </Routes>
     )
 }
 
-export function LogInCallback() {
-    const navigate = useNavigate()
-    useEffect(async () => {
-        const {access_token} = Object.fromEntries(
-            new URLSearchParams(window.location.hash.substring(1))
-        )
-
-        await fetch("/api/login", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify({access_token})
-        })
-
-        navigate("/login/google/callback");
-    }, [])
-
-    return <h1>Please wait...</h1>
-
-}

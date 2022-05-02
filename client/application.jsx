@@ -56,9 +56,9 @@ export function Application() {
 
     return <BrowserRouter>
         <Routes>
-            <Route path={"/"} element={<FrontPage/>}/>
+            <Route path={"/"} element={<FrontPage />}/>
             <Route path={"/login/*"} element={<LogInPage config={data.config} reload={reload}/>}/>
-            <Route path={"/profile"} element={<Profile user={data?.user}/>}/>
+            <Route path={"/profile"} element={<Profile user={data?.user} reload={reload}/>}/>
         </Routes>
     </BrowserRouter>
 }
