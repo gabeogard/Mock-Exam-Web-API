@@ -1,6 +1,6 @@
 import {useContext, useEffect, useState} from "react";
 import {Route, useNavigate, Routes, useParams} from "react-router-dom";
-import {ExamApiContext} from "./examApiContext";
+import {ExamApiContext} from "../lib/examApiContext";
 
 async function fetchJSON(url) {
     const res = await fetch(url)

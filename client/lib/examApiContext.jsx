@@ -1,6 +1,6 @@
 import * as React from 'react'
-import {fetchJSON} from "./application";
-import {postJSON} from "./application"
+import {postJSON} from "./postJSON";
+import {fetchJSON} from "./fetchJSON";
 
 export const ExamApiContext = React.createContext({
     async fetchLogin(){

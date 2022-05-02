@@ -1,8 +1,8 @@
-import {useLoading} from "./useLoading";
-import {fetchJSON} from "./application";
+import {useLoading} from "../lib/useLoading";
 import {useNavigate} from "react-router-dom";
 import {useContext, useEffect} from "react";
-import {ExamApiContext} from "./examApiContext";
+import {ExamApiContext} from "../lib/examApiContext";
+import {fetchJSON} from "../lib/fetchJSON";
 
 
 export function Profile({user, reload}) {

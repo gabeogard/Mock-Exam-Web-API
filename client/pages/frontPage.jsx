@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import {useContext} from "react";
-import {ExamApiContext} from "./examApiContext";
+import {ExamApiContext} from "../lib/examApiContext";
 
 export function FrontPage() {
 
