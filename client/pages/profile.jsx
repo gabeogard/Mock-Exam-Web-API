@@ -1,10 +1,3 @@
-import {useLoading} from "../lib/useLoading";
-import {useNavigate} from "react-router-dom";
-import {useContext, useEffect} from "react";
-import {ExamApiContext} from "../lib/examApiContext";
-import {fetchJSON} from "../lib/fetchJSON";
-
-
 export function Profile({user, reload}) {
 
     async function handleSignOut() {
