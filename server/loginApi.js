@@ -58,6 +58,26 @@ export function LoginApi() {
         res.json(response);
     });
 
+    router.get("/api/login", async (req, res) => {
+        const { access_token } = req.signedCookies;
+
+        if (access_token) {
+            const { userinfo_endpoint } = await fetchJSON(
+                "https://accounts.google.com/.well-known/openid-configuration"
+            );
+
+            const userinfo = await fetchJSON(userinfo_endpoint, {
+                headers: {
+                    Authorization: `Bearer ${access_token}`,
+                },
+            });
+
+            res.json(userinfo);
+        } else {
+            res.sendStatus(401);
+        }
+    });
+
     router.delete("/", (req, res) => {
         res.clearCookie("google_access_token");
         res.sendStatus(200);
