@@ -2,14 +2,6 @@ import {useContext, useEffect, useState} from "react";
 import {Route, useNavigate, Routes, useParams} from "react-router-dom";
 import {ExamApiContext} from "../examApiContext";
 
-async function fetchJSON(url) {
-    const res = await fetch(url)
-    if (!res.ok) {
-        throw new Error(`failed ${res.status}`)
-    }
-    return await res.json()
-}
-
 export function randomString(length) {
     const possible =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -69,7 +61,6 @@ function StartLogin({config}) {
 export function LoginCallback({reload, config}) {
     const {provider} = useParams();
     const [error, setError] = useState();
-    const navigate = useNavigate();
     const {registerLogin} = useContext(ExamApiContext);
     useEffect(async () => {
         const {access_token, error, error_description, state, code} =

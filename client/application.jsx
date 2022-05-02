@@ -1,5 +1,5 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {LogIn, LogInPage} from "./pages/logIn";
+import { LogInPage} from "./pages/logIn";
 import {Profile} from "./profile";
 import {useContext} from "react";
 import {ExamApiContext} from "./examApiContext"
