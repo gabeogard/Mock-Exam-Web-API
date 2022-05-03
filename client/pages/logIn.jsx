@@ -112,7 +112,7 @@ export function LoginCallback({reload, config}) {
 
         await registerLogin(provider, {access_token});
         reload();
-        window.location.href="/"
+        navigate("/")
     }, []);
 
     if (error) {
