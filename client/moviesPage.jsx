@@ -49,7 +49,7 @@ function MovieList() {
             <ul>
                 {data?.map((movie) => (
                     <div>
-                        <img src={movie.poster}/>
+                        <img src={movie.poster} alt={"no img found"}/>
                         <h2>Title: {movie.title}</h2>
                         <h3>Year: {movie.year}</h3>
                         <p>{movie.plot}</p>
