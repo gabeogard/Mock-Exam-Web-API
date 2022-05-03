@@ -124,7 +124,7 @@ export function LoginCallback({reload, config}) {
         );
     }
 
-    return <h1>Please wait...</h1>;
+    //return <h1>Please wait...</h1>;
 }
 
 export function EndSession({reload}) {
