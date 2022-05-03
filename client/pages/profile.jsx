@@ -1,4 +1,3 @@
-
 export function Profile({user, reload}) {
 
     async function handleSignOut() {
@@ -7,9 +6,10 @@ export function Profile({user, reload}) {
             throw new Error(`Failed to POST ${res.status}: ${res.statusText}`);
         }
         reload()
-        window.location.href="/"
+        window.location.href = "/"
         console.log(name)
     }
+
     const {name, email, picture} = user.google
 
     console.log(user.google)
@@ -19,7 +19,7 @@ export function Profile({user, reload}) {
         <h1>Welcome, {name}</h1>
         <img src={picture} alt={"profile picture"} width={"120px"}/>
         <div>
-                <p>Name: {name}</p>
+            <p>Name: {name}</p>
         </div>
         <div>
             <p>Email: {email}</p>

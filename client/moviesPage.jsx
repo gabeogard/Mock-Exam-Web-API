@@ -23,9 +23,9 @@ function MovieList() {
 export function MoviesPage() {
     return (
         <Routes>
-            <Route path={"/"} element={<MoviesLandingPage />}/>
-            <Route path={"/new"} element={<MoviesLandingPage />}/>
-            <Route path={"/list"} element={<MovieList />}/>
+            <Route path={"/"} element={<MoviesLandingPage/>}/>
+            <Route path={"/new"} element={<MoviesLandingPage/>}/>
+            <Route path={"/list"} element={<MovieList/>}/>
         </Routes>
     );
 }
