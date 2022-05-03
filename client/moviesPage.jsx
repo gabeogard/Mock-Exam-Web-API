@@ -48,7 +48,12 @@ function MovieList() {
             <h1>Movie List</h1>
             <ul>
                 {data?.map((movie) => (
-                    <MovieCard movie={movie}/>
+                    <div>
+                        <img src={movie.poster}/>
+                        <h2>Title: {movie.title}</h2>
+                        <h3>Year: {movie.year}</h3>
+                        <p>{movie.plot}</p>
+                    </div>
                 ))}
             </ul>
         </div>
