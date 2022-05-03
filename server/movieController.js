@@ -7,8 +7,14 @@ async function getMovies(req, res) {
         .db(process.env.MONGO_DATABASE)
         .collection("movies")
         .find()
-        .map(({ title}) => ({
+        .map(({ title, year, plot, genres, poster, id, imdb }) => ({
             title,
+            year,
+            plot,
+            genres,
+            poster,
+            id,
+            imdb,
         }))
         .limit(100)
         .toArray();
