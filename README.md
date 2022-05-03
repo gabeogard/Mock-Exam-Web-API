@@ -14,3 +14,8 @@ Application for Exam-preparation:
   - [] Write tests
   - [] Check test coverage
   - [] Solid frontend + backend communication
+
+NOTE(YOU WILL NEED TO CREATE .env FILE FOR SERVER / APP TO WORK)
+- MONGODB_URL:(URL FOR CONNECTION TO MONGO DB)
+- GOOGLE_CLIENT_ID:client id for google developer platform
+- COOKIE_SECRET: Random long string (fnkafmaworfmopasdpadawd)
