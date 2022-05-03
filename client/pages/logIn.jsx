@@ -59,6 +59,7 @@ function StartLogin({config}) {
 }
 
 export function LoginCallback({reload, config}) {
+    const navigate = useNavigate()
     const {provider} = useParams();
     const [error, setError] = useState();
     const {registerLogin} = useContext(ExamApiContext);
@@ -100,8 +101,7 @@ export function LoginCallback({reload, config}) {
             const {access_token} = await res.json();
             await registerLogin(provider, {access_token});
             console.log(window.location.href.toString())
-            reload();
-            window.location.href="/"
+            navigate("/")
             return;
         }
 
