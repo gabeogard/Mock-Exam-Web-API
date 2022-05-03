@@ -16,15 +16,25 @@ function MoviesLandingPage() {
 
 function MovieList() {
     return (
-        <div>EMPTY</div>
+        <div>
+            <h1>Movie List</h1>
+        </div>
     );
+}
+
+function AddMovies() {
+    return (
+        <div>
+            <h1>Add new movie</h1>
+        </div>
+    )
 }
 
 export function MoviesPage() {
     return (
         <Routes>
             <Route path={"/"} element={<MoviesLandingPage/>}/>
-            <Route path={"/new"} element={<MoviesLandingPage/>}/>
+            <Route path={"/new"} element={<AddMovies/>}/>
             <Route path={"/list"} element={<MovieList/>}/>
         </Routes>
     );
