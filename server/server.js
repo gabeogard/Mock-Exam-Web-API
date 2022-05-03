@@ -29,5 +29,7 @@ app.use((req, res, next) => {
 
 app.use("/api/login", LoginApi());
 
-app.listen(process.env.PORT || 3000)
+const server = app.listen(process.env.PORT || 3000, () =>{
+    console.log(`Started server on http://localhost:${server.address().port}`)
+})
 

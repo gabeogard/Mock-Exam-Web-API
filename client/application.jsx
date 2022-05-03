@@ -1,20 +1,21 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import { LogInPage} from "./pages/logIn";
+import {LogInPage} from "./pages/logIn";
 import {Profile} from "./pages/profile";
 import {useContext} from "react";
 import {ExamApiContext} from "./examApiContext"
 import {useLoading} from "./useLoading"
 import {FrontPage} from "./pages/frontPage";
+import {MoviesPage} from "./moviesPage";
 
 export async function postJSON(url, object) {
     const res = await fetch(url, {
         method: "POST",
         headers: {
-            "content-type":"application/json"
+            "content-type": "application/json"
         },
         body: JSON.stringify(object)
     })
-    if (!res.ok){
+    if (!res.ok) {
         throw new Error(`Failed to post ${res.status}: ${res.statusText}`)
     }
 }
@@ -25,7 +26,6 @@ export class HttpError extends Error {
         this.status = status;
     }
 }
-
 
 
 export async function fetchJSON(url, requestInit) {
@@ -47,18 +47,19 @@ export function Application() {
     const {fetchLogin} = useContext(ExamApiContext)
     const {data, error, loading, reload} = useLoading(fetchLogin)
 
-    if(error){
+    if (error) {
         return <div>Error: {error.toString()}</div>
     }
-    if (loading){
+    if (loading) {
         return <div>Please wait...</div>
     }
 
     return <BrowserRouter>
         <Routes>
-            <Route path={"/"} element={<FrontPage />}/>
-            <Route path={"/login/*"} element={<LogInPage config={data.config} reload={reload}/>}/>
+            <Route path={"/"} element={<FrontPage/>}/>
+            <Route path={"/login/*"} element={<LogInPage config={data?.config} reload={reload}/>}/>
             <Route path={"/profile"} element={<Profile user={data?.user} reload={reload}/>}/>
+            <Route path={"/movies/*"} element={<MoviesPage/>}/>
         </Routes>
     </BrowserRouter>
 }

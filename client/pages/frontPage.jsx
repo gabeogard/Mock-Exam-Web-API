@@ -2,11 +2,10 @@ import {Link} from "react-router-dom";
 
 export function FrontPage() {
 
-    return <div>
+    return <div className={"nav-wrapper"}>
         <h1>Welcome</h1>
-        <ul>
-            <li><Link to={"/login"}>Log in</Link></li>
-            <li><Link to={"/profile"}>Profile</Link></li>
-        </ul>
+            <div><Link to={"/login"}>Log in</Link></div>
+            <div><Link to={"/profile"}>Profile</Link></div>
+            <div><Link to={"/movies"}>Movies</Link></div>
     </div>
 }
