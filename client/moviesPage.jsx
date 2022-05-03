@@ -18,6 +18,18 @@ function MoviesLandingPage() {
     );
 }
 
+function MovieCard(movie) {
+    return (
+        <div>
+            <img src={movie.poster}/>
+            <h2>Title: {movie.title}</h2>
+            <h3>Year: {movie.year}</h3>
+            <p>{movie.plot}</p>
+        </div>
+        )
+    ;
+}
+
 function MovieList() {
     const { loading, error, data } = useLoading(async () =>
         fetchJSON("/api/movies")
@@ -35,8 +47,8 @@ function MovieList() {
         <div>
             <h1>Movie List</h1>
             <ul>
-                {data?.map((movies) => (
-                    <li key={movies.title}>{movies.title}</li>
+                {data?.map((movie) => (
+                    <MovieCard movie={movie}/>
                 ))}
             </ul>
         </div>
