@@ -1,4 +1,8 @@
 import {Route, Routes, Link} from "react-router-dom";
+import {useLoading} from "./useLoading";
+import {fetchJSON} from "./application";
+import {useState} from "react";
+
 
 function MoviesLandingPage() {
     return (
@@ -15,9 +19,26 @@ function MoviesLandingPage() {
 }
 
 function MovieList() {
+    const { loading, error, data } = useLoading(async () =>
+        fetchJSON("/api/movies")
+    );
+
+    if(loading){
+        return (<div>Please wait..</div>)
+    }
+    if(error){
+        return (<div>{error.toString()}</div>)
+    }
+
+    console.log(data)
     return (
         <div>
             <h1>Movie List</h1>
+            <ul>
+                {data?.map((movies) => (
+                    <li key={movies.title}>{movies.title}</li>
+                ))}
+            </ul>
         </div>
     );
 }

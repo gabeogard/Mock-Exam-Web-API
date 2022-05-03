@@ -47,7 +47,6 @@ export function LoginApi() {
         const response = { config, user: {} };
 
         const { google_access_token } = req.signedCookies;
-        console.log({ google_access_token});
         if (google_access_token) {
             response.user.google = await fetchUser(
                 google_access_token,

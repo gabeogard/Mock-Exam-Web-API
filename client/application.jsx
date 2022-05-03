@@ -28,23 +28,16 @@ export class HttpError extends Error {
 }
 
 
-export async function fetchJSON(url, requestInit) {
-    let res;
-    if (arguments.length === 1) {
-        res = await fetch(url);
-    } else res = await fetch(url, requestInit);
-    if (res.status === 204) {
-        console.log(204);
-        return null;
-    } else if (res.ok) {
-        return await res.json();
-    } else {
-        throw new HttpError(res.status, res.statusText);
+export async function fetchJSON(url) {
+    const res = await fetch(url);
+    if (!res.ok) {
+        throw new Error(`Failed to load ${res.status}: ${res.statusText}`);
     }
+    return await res.json();
 }
 
 export function Application() {
-    const {fetchLogin} = useContext(LoginApiContext)
+    const {fetchLogin, endSession, registerLogin} = useContext(LoginApiContext)
     const {data, error, loading, reload} = useLoading(fetchLogin)
 
     if (error) {

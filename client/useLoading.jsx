@@ -1,24 +1,24 @@
 import {useEffect, useState} from "react"
 
-export function useLoading(loadingFunction, deps = []) {
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState()
-    const [data, setData] = useState()
+export function useLoading(loadingFunction) {
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState();
+    const [data, setData] = useState();
 
     async function load() {
         try {
-            setLoading(true)
-            setData(await loadingFunction())
+            setLoading(true);
+            setData(await loadingFunction());
         } catch (error) {
-            setError(error)
+            setError(error);
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
     }
 
     useEffect(() => {
-        load()
-    }, deps)
+        load();
+    }, []);
 
-    return {loading, error, data, reload: load}
+    return { loading, error, data };
 }
