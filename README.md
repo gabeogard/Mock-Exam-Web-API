@@ -9,11 +9,11 @@ Application for Exam-preparation:
 - [] Express.js server
   - [x] Create server.js
   - [x] Create log-in API to sign in using OpenId
-  - [] Create MongoDB API to send, delete and fetch documents (Movies)
-  - [1/2] Make both API's accessible through server.js
+  - [x] Create MongoDB API to send, delete and fetch documents (Movies)
+  - [x] Make both API's accessible through server.js
   - [] Write tests
   - [] Check test coverage
-  - [] Solid frontend + backend communication
+  - [ish] Solid frontend + backend communication
 
 NOTE(YOU WILL NEED TO CREATE .env FILE FOR SERVER / APP TO WORK)
 - MONGODB_URL:(URL FOR CONNECTION TO MONGO DB)
