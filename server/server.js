@@ -6,12 +6,14 @@ import dotenv from "dotenv"
 import {fileURLToPath} from "url"
 import {LoginApi} from "./loginApi.js"
 import {MoviesApi} from "./moviesApi.js";
+import {MongoClient, ServerApiVersion} from "mongodb"
 
 dotenv.config()
 
 const app = express()
 const file = fileURLToPath(import.meta.url)
 const directory = path.dirname(file)
+
 
 
 
@@ -31,7 +33,7 @@ app.use((req, res, next) => {
 })
 
 app.use("/api/login", LoginApi());
-app.use("/api/movies",MoviesApi())
+app.use("/api/movies", MoviesApi())
 
 
 const server = app.listen(process.env.PORT || 3000, () =>{

@@ -1,25 +1,14 @@
 import express from "express";
+import {MongoClient, ServerApiVersion} from "mongodb";
+import { getMovies, postMovie } from "./movieController.js";
+
 
 export function MoviesApi() {
-    const movies = [
-        {
-            title:"Movie"
-        },
-        {
-            title: "Movie2"
-        },
-        {
-            title: "Faggot"
-        }
-    ]
-    const router = new express.Router();
-    router.get("/", (req,res) => {
-        res.json(movies);
-    })
 
-    router.post("/new", (req,res) => {
-        res.sendStatus(500)
-    })
+    const router = new express.Router();
+    router.get("/", getMovies);
+
+    router.post("/new", postMovie)
 
     return router
 }

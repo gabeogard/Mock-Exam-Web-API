@@ -38,7 +38,9 @@ export async function fetchJSON(url) {
 
 export function Application() {
     const {fetchLogin, endSession, registerLogin} = useContext(LoginApiContext)
-    const {data, error, loading, reload} = useLoading(fetchLogin)
+    const {data, error, loading, reload} = useLoading(async () =>
+    fetchLogin()
+    );
 
     if (error) {
         return <div>Error: {error.toString()}</div>
@@ -51,7 +53,7 @@ export function Application() {
         <Routes>
             <Route path={"/"} element={<FrontPage/>}/>
             <Route path={"/login/*"} element={<LogInPage config={data?.config} reload={reload}/>}/>
-            <Route path={"/profile"} element={<Profile user={data?.user} reload={reload}/>}/>
+            <Route path={"/profile"} element={<Profile user={data} reload={reload}/>}/>
             <Route path={"/movies/*"} element={<MoviesPage/>}/>
         </Routes>
     </BrowserRouter>
