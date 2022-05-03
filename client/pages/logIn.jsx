@@ -1,6 +1,6 @@
 import {useContext, useEffect, useState} from "react";
 import {Route, useNavigate, Routes, useParams} from "react-router-dom";
-import {ExamApiContext} from "../examApiContext";
+import {LoginApiContext} from "../loginApiContext";
 
 export function randomString(length) {
     const possible =
@@ -62,7 +62,7 @@ export function LoginCallback({reload, config}) {
     const navigate = useNavigate()
     const {provider} = useParams();
     const [error, setError] = useState();
-    const {registerLogin} = useContext(ExamApiContext);
+    const {registerLogin} = useContext(LoginApiContext);
     useEffect(async () => {
         const {access_token, error, error_description, state, code} =
             Object.fromEntries(
@@ -129,7 +129,7 @@ export function LoginCallback({reload, config}) {
 
 export function EndSession({reload}) {
     const navigate = useNavigate()
-    const { endSession } = useContext(ExamApiContext)
+    const { endSession } = useContext(LoginApiContext)
     useEffect(async () => {
         await endSession()
         reload()

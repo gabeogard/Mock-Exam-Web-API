@@ -2,7 +2,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {LogInPage} from "./pages/logIn";
 import {Profile} from "./pages/profile";
 import {useContext} from "react";
-import {ExamApiContext} from "./examApiContext"
+import {LoginApiContext} from "./loginApiContext"
 import {useLoading} from "./useLoading"
 import {FrontPage} from "./pages/frontPage";
 import {MoviesPage} from "./moviesPage";
@@ -44,7 +44,7 @@ export async function fetchJSON(url, requestInit) {
 }
 
 export function Application() {
-    const {fetchLogin} = useContext(ExamApiContext)
+    const {fetchLogin} = useContext(LoginApiContext)
     const {data, error, loading, reload} = useLoading(fetchLogin)
 
     if (error) {
